@@ -1,6 +1,6 @@
 'use strict';
 
-const { COUNT_URL, RAPIDAPI_SIGNUP_URL, daysAgo } = require('./lib/common');
+const { COUNT_URL, RAPIDAPI_SIGNUP_URL, clock, daysAgo } = require('./lib/common');
 
 // Connection test.
 // Uses the COUNT endpoint (returns a number, never job postings) with a very
@@ -8,16 +8,32 @@ const { COUNT_URL, RAPIDAPI_SIGNUP_URL, daysAgo } = require('./lib/common');
 // matches. Cost: exactly 1 RapidAPI request to /api/v2/jobs/count per
 // connection test; no job postings are delivered. See SUBMISSION-zapier.md for
 // how RapidAPI meters this request.
+// The free Basic plan allows 1 request per second, and Zapier may run the
+// test several times in a row, so a per-second rate limit is retried.
+const TEST_RETRIES = 3;
+const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
+
 const test = async (z) => {
-  const response = await z.request({
-    url: COUNT_URL,
-    method: 'GET',
-    params: {
-      countryCode: 'li',
-      dateCreated: daysAgo(2),
-      title: '"zapier connection test"',
-    },
-  });
+  const request = () =>
+    z.request({
+      url: COUNT_URL,
+      method: 'GET',
+      params: {
+        countryCode: 'li',
+        dateCreated: daysAgo(2),
+        title: '"zapier connection test"',
+      },
+    });
+  let response;
+  for (let attempt = 0; ; attempt++) {
+    try {
+      response = await request();
+      break;
+    } catch (error) {
+      if (error.name !== 'ThrottledError' || attempt >= TEST_RETRIES) throw error;
+      await sleep(clock.retryDelayMs * (attempt + 1));
+    }
+  }
   const body = response.data || {};
   return { totalCount: Number(body.totalCount) || 0, api: body.api || 'Techmap.io Job Posting API' };
 };
