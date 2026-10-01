@@ -1,0 +1,27 @@
+{
+  "name": "zapier-techmap",
+  "version": "1.0.0",
+  "description": "Zapier integration for the Techmap Job Postings API (RapidAPI).",
+  "main": "index.js",
+  "private": true,
+  "author": "Techmap GmbH",
+  "license": "UNLICENSED",
+  "homepage": "https://jobdatafeeds.com",
+  "scripts": {
+    "test": "jest --testTimeout 10000"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "dependencies": {
+    "zapier-platform-core": "19.1.0"
+  },
+  "devDependencies": {
+    "jest": "^30.0.0",
+    "nock": "^14.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/TechMap/zapier.techmap.io.git"
+  }
+}

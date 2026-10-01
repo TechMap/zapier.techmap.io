@@ -1,0 +1,94 @@
+{
+  "api": "Techmap.io Job Posting API",
+  "apiVersion": "v2.6",
+  "apiEndpoint": "GET search result for Job Postings by countryCode, dateCreated, language, industry, timezone, workPlace, etc.",
+  "page": 3,
+  "pageSize": 10,
+  "totalCount": 23,
+  "query": { "query": { "bool": { "must": [] } } },
+  "result": [
+    {
+      "portal": "careerjet",
+      "source": "careerjet_de",
+      "dateCreated": "2026-09-29T08:15:00.000Z",
+      "title": "Software Developer (m/w/d)",
+      "countryCode": "de",
+      "state": "BE",
+      "city": "Berlin",
+      "geoPoint": { "lon": 13.4114362, "lat": 52.5234299 },
+      "language": "de",
+      "locale": "de_DE",
+      "timezone": "CET",
+      "timezoneOffset": 1,
+      "company": "Acme Software GmbH",
+      "industry": "Software",
+      "department": "N/A",
+      "occupation": "Programmer",
+      "workPlace": ["Hybrid"],
+      "workType": ["FullTime"],
+      "contractType": ["Permanent"],
+      "careerLevel": ["N/A"],
+      "skills": ["JavaScript", "Java", "Scrum"],
+      "isDirect": false,
+      "isRecruiter": true,
+      "jsonLD": {
+        "@context": "https://schema.org",
+        "@type": "JobPosting",
+        "identifier": "675b101b57a080181cfce40e",
+        "validThrough": "2026-11-28T08:15:00Z",
+        "employmentType": "FullTime, Permanent",
+        "salaryCurrency": "EUR",
+        "description": "Acme Software is looking for a Software Developer.",
+        "title": "Software Developer (m/w/d)",
+        "url": "https://www.example.com/jobad/1",
+        "datePosted": "2026-09-29",
+        "hiringOrganization": { "@type": "Organization", "name": "Acme Software GmbH", "url": "https://www.example.com" },
+        "jobLocation": {
+          "@type": "Place",
+          "name": "Berlin, Bundesland Berlin, Germany",
+          "latitude": 52.5234299,
+          "longitude": 13.4114362,
+          "address": { "@type": "PostalAddress", "addressLocality": "Berlin", "addressCountry": "Germany", "addressRegion": "BE" }
+        },
+        "baseSalary": {
+          "@type": "MonetaryAmount",
+          "currency": "EUR",
+          "value": { "@type": "QuantitativeValue", "minValue": "55000", "maxValue": "80000", "unitText": "YEAR" }
+        }
+      }
+    },
+    {
+      "portal": "techmap",
+      "source": "techmap_de",
+      "dateCreated": "2026-09-30T10:00:00.000Z",
+      "title": "Senior Java Developer",
+      "countryCode": "de",
+      "city": "Berlin",
+      "company": "Example AG",
+      "workPlace": ["Remote", "Hybrid"],
+      "workType": ["FullTime"],
+      "contractType": ["Permanent"],
+      "careerLevel": ["Senior"],
+      "skills": ["Java"],
+      "isDirect": true,
+      "isRecruiter": false,
+      "jsonLD": {
+        "identifier": "675b101b57a080181cfce999",
+        "url": "https://www.example.org/jobs/42",
+        "description": "Join Example AG as Senior Java Developer."
+      }
+    },
+    {
+      "portal": "techmap",
+      "source": "techmap_de",
+      "dateCreated": "2026-09-30T10:00:00.000Z",
+      "title": "Senior Java Developer",
+      "company": "Example AG",
+      "jsonLD": {
+        "identifier": "675b101b57a080181cfce999",
+        "url": "https://www.example.org/jobs/42"
+      }
+    }
+  ],
+  "resultSizeInBytes": 4096
+}
