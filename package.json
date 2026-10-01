@@ -5,8 +5,8 @@
   "main": "index.js",
   "private": true,
   "author": "Techmap GmbH",
-  "license": "UNLICENSED",
-  "homepage": "https://jobdatafeeds.com",
+  "license": "MIT",
+  "homepage": "https://techmap.io",
   "scripts": {
     "test": "jest --testTimeout 10000"
   },
